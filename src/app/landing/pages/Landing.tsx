@@ -1,5 +1,7 @@
+import { cn } from "@/lib/utils"
 import Hero from "../components/Hero"
 import Navbar from "../components/Navbar"
+import { LANDING_PAGE_ON_LOAD_ANIMATION } from "@/types/animation-types"
 
 const Landing = () => {
     return (
@@ -9,7 +11,9 @@ const Landing = () => {
                 </div>
                 <div className="max-h-screen min-h-screen">
                     <Navbar />
-                    <Hero />
+                    <div className={cn(LANDING_PAGE_ON_LOAD_ANIMATION)}>
+                        <Hero />
+                    </div>
                 </div>
             </div>
         </div>

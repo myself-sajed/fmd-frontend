@@ -25,7 +25,7 @@ import AppLogo from "./AppLogo"
 const navigationLinks = [
     { href: "#", label: "Home", icon: HomeIcon, active: true },
     { href: "#", label: "Features", icon: LayersIcon },
-    { href: "#", label: "Creator", icon: User },
+    { href: "https://sajed-dev.vercel.app", label: "Creator", icon: User },
 ]
 
 
