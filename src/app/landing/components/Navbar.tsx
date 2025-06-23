@@ -1,6 +1,4 @@
-import { useId } from "react"
 import {
-    GlobeIcon,
     HomeIcon,
     LayersIcon,
     User,
@@ -18,17 +16,10 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from '@/components/ui/popover'
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from '@/components/ui/select'
-import Logo from "./Logo"
 import ThemeToggle from "@/components/custom/theme-toggle"
 import UserMenu from "./UserMenu"
 import { Link } from "react-router-dom"
+import AppLogo from "./AppLogo"
 
 // Navigation links with icons for desktop icon-only navigation
 const navigationLinks = [
@@ -37,17 +28,12 @@ const navigationLinks = [
     { href: "#", label: "Creator", icon: User },
 ]
 
-// Language options
-const languages = [
-    { value: "en", label: "En" },
-    { value: "es", label: "Es" },
-    { value: "fr", label: "Fr" },
-    { value: "de", label: "De" },
-    { value: "ja", label: "Ja" },
-]
 
-export default function Navbar() {
-    const id = useId()
+type Props = {
+    showLinks?: boolean;
+}
+
+export default function Navbar({ showLinks = true }: Props) {
 
     return (
         <header className="px-4 md:px-6 bg-white z-50">
@@ -116,43 +102,19 @@ export default function Navbar() {
                         </PopoverContent>
                     </Popover>
                     {/* Logo */}
-                    <a href="#" className="text-primary hover:text-primary/90 flex items-center gap-5">
-                        <Logo />
-                        <span className="hidden sm:block sm:text-2xl md:text-xl lg:text-2xl">Find My Doctor</span>
-                    </a>
+                    <AppLogo />
                 </div>
                 {/* Middle section */}
-                <div className="md:flex items-center justify-center gap-10 hidden">
+                {showLinks && <div className="md:flex items-center justify-center gap-10 hidden">
                     {/* Desktop navigation */}
                     {navigationLinks.map((link) => (
                         <Link to={link.href} className="text-sm">{link.label}</Link>
                     ))}
-                </div>
+                </div>}
                 {/* Right side */}
                 <div className="flex items-center gap-2">
                     {/* Theme toggle */}
                     <ThemeToggle />
-                    {/* Language selector */}
-                    <Select defaultValue="en">
-                        <SelectTrigger
-                            id={`language-${id}`}
-                            className="[&>svg]:text-muted-foreground/80 hover:bg-accent hover:text-accent-foreground h-8 border-none px-2 shadow-none [&>svg]:shrink-0"
-                            aria-label="Select language"
-                        >
-                            <GlobeIcon size={16} aria-hidden="true" />
-                            <SelectValue className="hidden sm:inline-flex" />
-                        </SelectTrigger>
-                        <SelectContent className="[&_*[role=option]]:ps-2 [&_*[role=option]]:pe-8 [&_*[role=option]>span]:start-auto [&_*[role=option]>span]:end-2 [&_*[role=option]>span]:flex [&_*[role=option]>span]:items-center [&_*[role=option]>span]:gap-2">
-                            {languages.map((lang) => (
-                                <SelectItem key={lang.value} value={lang.value}>
-                                    <span className="flex items-center gap-2">
-                                        <span className="truncate">{lang.label}</span>
-                                    </span>
-                                </SelectItem>
-                            ))}
-                        </SelectContent>
-                    </Select>
-                    {/* User menu */}
                     <UserMenu />
                 </div>
             </div>
