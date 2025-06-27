@@ -18,6 +18,7 @@ const useSignupHandler = () => {
     email: "sajed@gmail.com",
     password: "Sajed@123",
     cPassword: "Sajed@123",
+    photoURL: "https://avatar.iran.liara.run/public/1",
   });
 
   // create account mutation

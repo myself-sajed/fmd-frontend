@@ -3,6 +3,7 @@ export interface ISignupForm {
   email: string;
   password: string;
   cPassword: string;
+  photoURL: string;
 }
 
 export interface ILoginForm {

@@ -7,7 +7,7 @@ export const self = () => client.get(`${AUTH_SERVICE}/self`);
 export const checkToken = () => client.get(`${AUTH_SERVICE}/check-token`);
 
 export const createAccount = (formData: ISignupForm) =>
-  client.post(`${AUTH_SERVICE}/signup`, formData);
+  client.post(`${AUTH_SERVICE}/register`, formData);
 
 export const login = (formData: ILoginForm) =>
   client.post(`${AUTH_SERVICE}/login`, formData);
