@@ -2,7 +2,6 @@ import {
   ArrowUpRight,
   Link,
   MoreHorizontal,
-  Plus,
   StarOff,
   Trash2,
 } from "lucide-react"
@@ -24,7 +23,6 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 import InlineEmpty from "@/components/custom/InlineEmpty"
-import { Button } from "@/components/ui/button"
 
 export function NavCases({
   cases,
@@ -87,10 +85,6 @@ export function NavCases({
             ))
             : <div className="flex flex-col item-center gap-4">
               <InlineEmpty title="No cases found..." className="mt-10" />
-              <Button>
-                <Plus />
-                Create your first case
-              </Button>
             </div>
         }
       </SidebarMenu>
