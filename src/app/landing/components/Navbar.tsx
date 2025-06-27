@@ -20,13 +20,9 @@ import ThemeToggle from "@/components/custom/theme-toggle"
 import UserMenu from "./UserMenu"
 import { Link } from "react-router-dom"
 import AppLogo from "./AppLogo"
+import { useAuthStore } from "@/store/auth-store"
+import siteLinks from "@/lib/sitelinks"
 
-// Navigation links with icons for desktop icon-only navigation
-const navigationLinks = [
-    { href: "#", label: "Home", icon: HomeIcon, active: true },
-    { href: "#", label: "Features", icon: LayersIcon },
-    { href: "https://sajed-dev.vercel.app", label: "Creator", icon: User },
-]
 
 
 type Props = {
@@ -34,6 +30,15 @@ type Props = {
 }
 
 export default function Navbar({ showLinks = true }: Props) {
+
+
+    const { user } = useAuthStore()
+
+    const navigationLinks = [
+        { href: user ? siteLinks.cases.link : siteLinks.landing.link, label: user ? "Cases" : "Home", icon: HomeIcon },
+        { href: "#", label: "Features", icon: LayersIcon },
+        { href: "https://sajed-dev.vercel.app", label: "Creator", icon: User },
+    ]
 
     return (
         <header className="px-4 md:px-6 bg-white z-50">
@@ -85,7 +90,6 @@ export default function Navbar({ showLinks = true }: Props) {
                                                 <NavigationMenuLink
                                                     href={link.href}
                                                     className="flex-row items-center gap-2 py-1.5"
-                                                    active={link.active}
                                                 >
                                                     <Icon
                                                         size={16}
@@ -115,7 +119,12 @@ export default function Navbar({ showLinks = true }: Props) {
                 <div className="flex items-center gap-2">
                     {/* Theme toggle */}
                     <ThemeToggle />
-                    <UserMenu />
+                    {
+                        user ?
+                            <UserMenu user={user} />
+                            : <Link to={siteLinks.login.link}><Button> <User className="h-3 w-3 opacity-80" /> Login</Button> </Link>
+                    }
+
                 </div>
             </div>
         </header>

@@ -1,6 +1,6 @@
 export const UserRolesEnum = {
-  CLIENT: "client",
-  DOCTOR: "doctor",
+  CLIENT: "Client",
+  DOCTOR: "Doctor",
 } as const;
 
 export const UserRoles = {

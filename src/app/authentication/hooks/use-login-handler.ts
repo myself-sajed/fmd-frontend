@@ -18,7 +18,7 @@ const useLoginHandler = () => {
     mutationFn: () => login(formData),
     onSuccess: async (data) => {
       if (data?.data?.status === "success") {
-        setUser(data?.data?.data?.user);
+        setUser(data?.data?.user);
         toast.success("User logged in successfully");
       } else {
         setUser(null);

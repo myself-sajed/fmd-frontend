@@ -11,7 +11,7 @@ const Protected = () => {
 
     useEffect(() => {
         if (!user) {
-            navigate(`${siteLinks.login.link}?returnTo=${location.pathname}`, { replace: true })
+            navigate(`${siteLinks.redirection.link}`, { replace: true })
         }
     }, [user, location, navigate])
 

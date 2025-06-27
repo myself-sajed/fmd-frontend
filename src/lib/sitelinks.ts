@@ -29,6 +29,11 @@ const siteLinks = {
     link: "/page-not-found",
     Icon: Box,
   },
+  redirection: {
+    title: "Redirecting User",
+    link: "/redirection",
+    Icon: Box,
+  },
 };
 
 export default siteLinks;

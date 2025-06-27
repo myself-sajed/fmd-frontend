@@ -3,7 +3,7 @@ import { logout } from "../api/auth-api";
 import { toast } from "sonner";
 import { useAuthStore } from "@/store/auth-store";
 import { useNavigate } from "react-router-dom";
-import siteLinks from "@/sitelinks/sitelinks";
+import siteLinks from "@/lib/sitelinks";
 
 const useLogout = () => {
   const { setUser } = useAuthStore();

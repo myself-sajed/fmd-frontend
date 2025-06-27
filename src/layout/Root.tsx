@@ -16,7 +16,7 @@ const Root = () => {
         queryKey: ['SELF', user?.id],
         queryFn: async () => {
             try {
-                return await self().then((data) => data?.data?.data?.user);
+                return await self().then((data) => data?.data);
             } catch (err) {
                 if (
                     err instanceof AxiosError &&
@@ -48,9 +48,9 @@ const Root = () => {
                 setUser(fetchedUser)
             }
         }
-    }, [user, fetchedUser])
+    }, [user, fetchedUser, setUser])
 
-    if (isLoading) {
+    if (isLoading && !user) {
         return <SuspenseLoading />;
     }
 
