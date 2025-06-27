@@ -9,8 +9,6 @@ const Unprotected = () => {
     const location = useLocation();
     const returnTo = new URLSearchParams(location.search).get("returnTo");
 
-    console.log(user)
-
     const DEFAULT_PAGE_FOR_USERS = useMemo(() => {
         return {
             [UserRolesEnum.CLIENT]: siteLinks.cases.link,
