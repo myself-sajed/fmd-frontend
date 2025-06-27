@@ -10,7 +10,7 @@ interface ProtectedRouteProps {
 
 const ProtectedHOC = ({ allowedRoles, children }: ProtectedRouteProps) => {
     const { user } = useAuthStore()
-    const userRole = user?.role.name
+    const userRole = user?.role
 
     if (!allowedRoles.includes(userRole!)) {
         return <UnauthorizedError />;
