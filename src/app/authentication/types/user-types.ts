@@ -1,15 +1,25 @@
 export interface IUserInfo {
-  id: number;
+  _id: string;
   name: string;
-  avatar: string;
   email: string;
-  image?: string;
   role: IUserRole;
-  onboarded: boolean;
-  createdAt: Date;
-  updatedAt: Date;
-  isActive: boolean;
-  lastLogin?: Date;
+  password: string;
+  photoURL: string;
+  gender: IGender;
+  onboarded?: boolean;
 }
 
-export type IUserRole = "Client" | "Doctor";
+export const Gender = {
+  MALE: "Male",
+  FEMALE: "Female",
+  OTHER: "Other",
+};
+
+export type IGender = keyof typeof Gender;
+export type IUserRole = keyof typeof UserRoles;
+
+export const UserRoles = {
+  ADMIN: "Admin",
+  PATIENT: "Client",
+  DOCTOR: "Doctor",
+};

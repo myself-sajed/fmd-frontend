@@ -1,8 +1,12 @@
 import ChatTextarea from '@/app/landing/components/ChatTextarea'
+import { titleSetter } from '@/lib/title';
 import { cn } from '@/lib/utils';
 import { Brain, HeartPulse, Bone, Thermometer } from 'lucide-react';
 
 const CreateCase = () => {
+
+    titleSetter("Create a case")
+
     return (
         <div className="p-2 sm:p-5 h-full my-auto flex-1 overflow-hidden relative">
             {/* Scrollable content area */}
@@ -18,14 +22,14 @@ const CreateCase = () => {
                             <button
                                 key={issue.label}
                                 className={cn(
-                                    "flex items-center gap-2 cursor-pointer text-sm border-1 rounded-full px-5 py-0.5 transition",
+                                    "flex items-center cursor-pointer text-sm border-1 rounded-full px-5 py-0.5 transition",
                                     issue.classes.bgColor,
                                     issue.classes.textColor,
                                     issue.classes.hoverColor,
                                     issue.classes.borderColor,
                                 )}
                             >
-                                {<issue.Icon className='h-4 w-4 mr-2 opacity-80' />}
+                                {<issue.Icon className='h-3 w-3 mr-2 opacity-80' />}
                                 {issue.label}
                             </button>
                         ))}

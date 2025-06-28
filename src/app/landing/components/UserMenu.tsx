@@ -17,8 +17,8 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import type { IUserInfo } from "@/app/authentication/types/user-types"
 import useLogout from "@/app/authentication/hooks/use-logout"
+import type { IUserInfo } from "@/app/authentication/types/user-types"
 
 export default function UserMenu({ user }: { user: IUserInfo }) {
 
@@ -32,10 +32,10 @@ export default function UserMenu({ user }: { user: IUserInfo }) {
                         isLoggingOut
                             ? <Loader2 className="animate-spin h-5 w-5" />
                             : <Avatar>
-                                <AvatarImage src={user?.avatar} alt="Profile image" />
+                                <AvatarImage src={user?.photoURL} alt="Profile image" />
                                 <AvatarFallback>{user?.name
                                     ?.split(" ")
-                                    .map((part) => part[0]?.toUpperCase())
+                                    .map((part: string) => part[0]?.toUpperCase())
                                     .join("") || "?"}
                                 </AvatarFallback>
                             </Avatar>
