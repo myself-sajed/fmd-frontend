@@ -27,6 +27,8 @@ const ChatTextarea: React.FC<ChatTextareaProps> = ({ initialValue = "" }) => {
     }, [input]);
 
 
+
+
     return (
         <div className="relative max-w-6xl sm:max-w-4xl mx-auto">
             <Textarea
