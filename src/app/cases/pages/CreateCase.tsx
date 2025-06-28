@@ -1,4 +1,4 @@
-import ChatTextarea from '@/app/landing/components/ChatTextarea'
+import ChatTextarea from '@/components/custom/ChatTextarea'
 import { titleSetter } from '@/lib/title';
 import { cn } from '@/lib/utils';
 import { Brain, HeartPulse, Bone, Thermometer } from 'lucide-react';

@@ -1,4 +1,4 @@
-import ChatTextarea from "./ChatTextarea"
+import ChatTextarea from "../../../components/custom/ChatTextarea"
 
 const Hero = () => {
     return (
