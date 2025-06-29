@@ -12,6 +12,12 @@ const siteLinks = {
     routeLink: "cases",
     Icon: HeartPlus,
   },
+  caseDetails: (caseId?: string) => ({
+    title: "Case Details",
+    link: `/cases/${caseId}`,
+    routeLink: ":caseId",
+    Icon: HeartPlus,
+  }),
   login: {
     title: "Login",
     link: "/auth/login",
