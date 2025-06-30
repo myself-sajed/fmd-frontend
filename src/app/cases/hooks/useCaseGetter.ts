@@ -14,6 +14,7 @@ const useCaseGetter = () => {
     queryKey: ["GET_ALL_TICKETS", user?._id],
     queryFn: () => getAllCases().then((res) => res?.data?.data as ICase[]),
     enabled: !!user,
+    refetchOnWindowFocus: false,
   });
 
   return {
