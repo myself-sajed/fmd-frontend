@@ -14,8 +14,8 @@ const Hero = () => {
                     </p>
                 </div>
                 <div className="mt-20">
-                    <ChatTextarea />
-                    <p className="text-xs text-muted-foreground text-center mt-2">Try to write detailed query for better analysis.</p>
+                    <ChatTextarea className="max-w-4xl mx-auto" />
+                    <p className="text-xs text-muted-foreground text-center">Try to write detailed query for better analysis.</p>
                 </div>
             </div>
         </div>
