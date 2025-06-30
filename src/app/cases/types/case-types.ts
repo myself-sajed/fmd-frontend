@@ -4,6 +4,8 @@ import type {
 } from "@/app/authentication/types/doctor-types";
 import type { IGender, IUserInfo } from "@/app/authentication/types/user-types";
 
+export const FMD_CLIENT_QUERY_LOCAL_STORAGE_KEY = "FMD_CLIENT_QUERY";
+
 export interface ICase {
   _id: string;
   client: IUserInfo;
