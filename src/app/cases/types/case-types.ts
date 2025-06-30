@@ -2,19 +2,19 @@ import type {
   IDoctor,
   IDoctorConsultationTypes,
 } from "@/app/authentication/types/doctor-types";
-import type { IGender } from "@/app/authentication/types/user-types";
+import type { IGender, IUserInfo } from "@/app/authentication/types/user-types";
 
 export interface ICase {
   _id: string;
-  client: string;
+  client: IUserInfo;
   ai_case_name?: string;
   client_raw_query: string;
   client_preferences: ICaseClientPreferences;
   ai_summary?: string;
   suggested_specializations?: string[];
-  urgency_level?: "low" | "medium" | "high";
+  urgency_level?: ICaseUrgencyLevel;
   assigned_doctor?: IDoctor;
-  suggested_doctors?: string[];
+  suggested_doctors?: IDoctor[];
   ai_doctor_summary: IAIDoctorSummary;
   doctor_notes?: string;
   tips: string[];

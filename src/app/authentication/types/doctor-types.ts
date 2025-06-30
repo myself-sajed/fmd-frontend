@@ -1,6 +1,7 @@
 import type { IUserInfo } from "./user-types";
 
 export interface IDoctor {
+  _id: string;
   user: IUserInfo;
   specialization: string[];
   degree: string[];

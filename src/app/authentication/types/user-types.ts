@@ -16,10 +16,11 @@ export const Gender = {
 };
 
 export type IGender = keyof typeof Gender;
-export type IUserRole = keyof typeof UserRoles;
 
 export const UserRoles = {
   ADMIN: "Admin",
   PATIENT: "Client",
   DOCTOR: "Doctor",
 };
+
+export type IUserRole = keyof typeof UserRoles;

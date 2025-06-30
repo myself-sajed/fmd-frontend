@@ -16,7 +16,7 @@ const CasesLayout = () => {
         <SidebarProvider>
             <AppSidebar />
             <SidebarInset className="relative min-h-screen flex flex-col">
-                <div className="sticky top-1 z-10 border-b bg-white">
+                <div className="sticky top-0 z-10 border-b backdrop-blur-md">
                     <Navbar showLinks={false} />
                 </div>
 

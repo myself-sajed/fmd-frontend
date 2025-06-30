@@ -1,7 +1,7 @@
 import * as React from "react"
 import {
+  Pen,
   Search,
-  Sparkles,
 } from "lucide-react"
 
 import { NavCases } from "@/app/cases/sidebar/nav-cases"
@@ -12,6 +12,7 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar"
+import siteLinks from "@/lib/sitelinks"
 
 // This is sample data.
 const data = {
@@ -23,8 +24,8 @@ const data = {
     },
     {
       title: "New Case",
-      url: "#",
-      icon: Sparkles,
+      url: siteLinks.cases.link,
+      icon: Pen,
     },
   ],
 }
