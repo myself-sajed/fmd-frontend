@@ -20,7 +20,7 @@ const CasesLayout = () => {
                     <Navbar showLinks={false} />
                 </div>
 
-                <div>
+                <div className="h-full w-full">
                     {
                         caseId
                             ? <CaseDetails />
