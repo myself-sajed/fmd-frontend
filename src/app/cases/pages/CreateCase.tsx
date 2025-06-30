@@ -2,27 +2,29 @@ import ChatTextarea from '@/app/cases/components/ChatTextarea'
 import { titleSetter } from '@/lib/title';
 import { cn } from '@/lib/utils';
 import { Brain, HeartPulse, Bone, Thermometer } from 'lucide-react';
+import { useState } from 'react';
 
 const CreateCase = () => {
 
     titleSetter("Create a case")
 
+    const [commonIssue, setCommonIssue] = useState("")
+
     return (
-        <div className="p-2 sm:p-5 h-full flex-1 overflow-hidden relative">
-            {/* Scrollable content area */}
-            <div className="overflow-y-auto h-full pb-40">
-                <div className="flex flex-col gap-5 justify-center items-center h-full text-center">
-                    <p className="transition-all duration-300 text-3xl sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold">
+        <div className='flex items-center justify-center h-full p-2 sm:p-5'>
+
+            <div className='space-y-15 w-full'>
+                <div className='space-y-4'>
+                    <p className="transition-all text-center duration-300 text-3xl sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-gray-900">
                         How are you feeling today?
                     </p>
-
-                    {/* Chips */}
-                    <div className="flex flex-wrap gap-2 justify-center max-w-xl">
+                    <div className="flex flex-wrap gap-2 justify-center mx-auto max-w-xl">
                         {commonIssues.map((issue) => (
                             <button
+                                onClick={() => setCommonIssue(issue.text)}
                                 key={issue.label}
                                 className={cn(
-                                    "flex items-center cursor-pointer text-sm border-1 rounded-full px-5 py-0.5 transition",
+                                    "flex items-center cursor-pointer text-xs sm:text-sm border-1 rounded-full px-5 py-0.5 transition",
                                     issue.classes.bgColor,
                                     issue.classes.textColor,
                                     issue.classes.hoverColor,
@@ -35,14 +37,12 @@ const CreateCase = () => {
                         ))}
                     </div>
                 </div>
-            </div>
-
-            {/* Sticky Chat Box */}
-            <div className="sticky bottom-0 bg-white z-10 px-2 sm:px-5 pt-2">
-                <ChatTextarea />
-                <p className="text-[10px] sm:text-xs text-muted-foreground text-center mt-1">
-                    Write a detailed query for better results. This will create a new case.
-                </p>
+                <div className="px-2 sm:px-5 pt-2">
+                    <ChatTextarea initialValue={commonIssue} className="max-w-4xl mx-auto" />
+                    <p className="text-[10px] sm:text-xs text-muted-foreground text-center mt-1">
+                        Write a detailed query for better results. This will create a new case.
+                    </p>
+                </div>
             </div>
         </div>
     )
