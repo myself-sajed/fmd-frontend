@@ -20,24 +20,18 @@ export const formatDate = (dateString?: string): string => {
   }
 };
 
-export const getUrgencyColor = (
-  level?: string
-): "destructive" | "default" | "secondary" => {
+export const getUrgencyColor = (level?: string) => {
   switch (level?.toLowerCase() as ICaseUrgencyLevel) {
     case CaseUrgencyLevel.HIGH:
-      return "destructive";
+      return "bg-red-600 text-red-50";
     case CaseUrgencyLevel.MEDIUM:
-      return "default";
+      return "bg-teal-600 text-teal-50";
     case CaseUrgencyLevel.LOW:
-      return "secondary";
-    default:
-      return "secondary";
+      return "bg-blue-600 text-blue-50";
   }
 };
 
-export const getStatusColor = (
-  status?: string
-): "default" | "secondary" | "destructive" => {
+export const getStatusColor = (status?: string) => {
   if (
     [
       CaseStatus.Cancelled,
@@ -48,7 +42,7 @@ export const getStatusColor = (
       CaseStatus.FailedToInitiate,
     ].includes(status as ICaseStatus)
   ) {
-    return "destructive";
+    return "bg-red-600 text-red-50";
   }
 
   if (
@@ -56,8 +50,8 @@ export const getStatusColor = (
       status as ICaseStatus
     )
   ) {
-    return "default";
+    return "bg-blue-600 text-blue-50";
   }
 
-  return "secondary";
+  return "bg-gray-600 text-gray-50";
 };
