@@ -8,7 +8,7 @@ const CreateCase = () => {
     titleSetter("Create a case")
 
     return (
-        <div className="p-2 sm:p-5 h-full my-auto flex-1 overflow-hidden relative">
+        <div className="p-2 sm:p-5 h-full flex-1 overflow-hidden relative">
             {/* Scrollable content area */}
             <div className="overflow-y-auto h-full pb-40">
                 <div className="flex flex-col gap-5 justify-center items-center h-full text-center">

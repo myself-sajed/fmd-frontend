@@ -23,11 +23,9 @@ const CaseDetails = () => {
         refetchOnWindowFocus: false
     })
 
-    console.log(caseDetails)
-
     return (
         <div>
-            <div className="mt-5 p-5">
+            <div className="p-5">
                 {
                     isLoading
                         ? <Loading className='mt-10' title='Fetching case details' />

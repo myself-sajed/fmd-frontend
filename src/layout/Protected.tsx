@@ -11,9 +11,10 @@ const Protected = () => {
 
     useEffect(() => {
         if (!user) {
-            navigate(`${siteLinks.redirection.link}`, { replace: true })
+            navigate(`${siteLinks.login.link}?returnTo=${location.pathname}`, { replace: true })
         }
     }, [user, location, navigate])
+
 
     return (
         <div className="min-h-screen">

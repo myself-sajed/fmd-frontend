@@ -5,12 +5,10 @@ import AuthRoutes from "./module-routes/auth-routes";
 import ErrorElement from "@/components/custom/ErrorElement";
 import Landing from "@/app/landing/pages/Landing";
 import CaseRoutes from "./module-routes/case-routes";
-import siteLinks from "@/lib/sitelinks";
 
 const Root = lazy(() => import("@/layout/Root"));
 const ProtectedWithSidebar = lazy(() => import("@/layout/Protected"));
 const Unprotected = lazy(() => import("@/layout/Unprotected"));
-const Redirection = lazy(() => import("@/layout/Redirection"));
 
 const Routes = () => [
     {
@@ -64,14 +62,6 @@ const Routes = () => [
             }
         ],
     },
-    {
-        path: siteLinks.redirection.link,
-        element: (
-            <Suspense fallback={<SuspenseLoading />}>
-                <Redirection />
-            </Suspense>),
-
-    }
 ];
 
 export default Routes

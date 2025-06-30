@@ -13,7 +13,7 @@ const Root = () => {
     const { pathname } = useLocation();
 
     const { data: fetchedUser, isLoading } = useQuery({
-        queryKey: ['SELF', user?.id],
+        queryKey: ['SELF', user?._id],
         queryFn: async () => {
             try {
                 return await self().then((data) => data?.data);
