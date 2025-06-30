@@ -1,11 +1,13 @@
 import type { ICase } from "../types/case-types";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Stethoscope, Clock, User, MapPin, Mail, Calendar, Languages, GraduationCap, Star, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { Stethoscope, MapPin, Mail, Calendar, Languages, GraduationCap, Star, AlertCircle, CheckCircle2, Sparkles } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import type { IDoctor } from "@/app/authentication/types/doctor-types";
+import CaseDataTile from "./CaseDataTile";
+import { Button } from "@/components/ui/button";
 
 const RenderDoctorCards = ({ caseData }: { caseData: ICase }) => {
 
@@ -31,23 +33,21 @@ const RenderDoctorCards = ({ caseData }: { caseData: ICase }) => {
                                 </AvatarFallback>
                             </Avatar>
                             <div>
-                                <CardTitle className="text-xl text-gray-900">
+                                <CardTitle className="text-lg text-gray-900">
                                     {doctor.user?.name || 'Unknown Doctor'}
                                 </CardTitle>
-                                <CardDescription className="flex items-center space-x-2 mt-1">
-                                    <Stethoscope className="h-4 w-4" />
-                                    <span>{doctor.specialization?.join(', ') || 'General Practice'}</span>
+                                <CardDescription>
+                                    <CaseDataTile Icon={Stethoscope} value={doctor.specialization?.join(', ') || 'General Practice'} valueClassName="text-xs text-muted-foreground" iconClassName="h-3 w-3" />
+                                    <CaseDataTile Icon={GraduationCap} iconClassName="h-3 w-3">
+                                        <div>
+                                            {doctor.degree?.map((deg, index) => (
+                                                <span key={index} className="text-xs">
+                                                    {deg}{index < doctor.degree.length - 1 ? ', ' : ''}
+                                                </span>
+                                            )) || <span className="text-xs text-gray-500">Not specified</span>}
+                                        </div>
+                                    </CaseDataTile>
                                 </CardDescription>
-                                <div className="flex items-center space-x-4 mt-2 text-sm text-gray-600">
-                                    <div className="flex items-center space-x-1">
-                                        <Clock className="h-4 w-4" />
-                                        <span>{doctor.experience || 0} years</span>
-                                    </div>
-                                    <div className="flex items-center space-x-1">
-                                        <User className="h-4 w-4" />
-                                        <span>{doctor.user?.gender || 'Not specified'}</span>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         {doctorSummary?.suitability_score && (
@@ -60,14 +60,20 @@ const RenderDoctorCards = ({ caseData }: { caseData: ICase }) => {
                 </CardHeader>
 
                 <CardContent className="space-y-4">
-                    <p className="text-gray-700 text-sm leading-relaxed">
-                        {doctor.bio || 'No bio available'}
-                    </p>
+                    <div className="border-b pb-3 -mt-8 space-y-3">
+                        {
+                            doctor.bio && <p className="text-gray-700 text-sm">
+                                {doctor.bio || 'No bio available'}
+                            </p>
+                        }
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="space-y-2">
-                            <div className="flex items-start space-x-2">
-                                <MapPin className="h-4 w-4 text-gray-500 mt-0.5" />
+                        <Button><Calendar /> Schedule an Appointment</Button>
+                    </div>
+
+                    <div className="grid grid-cols-1 gap-4">
+                        <div className="space-y-3">
+                            <CaseDataTile Icon={Mail} value={doctor?.user?.email} />
+                            <CaseDataTile Icon={MapPin} className="items-start" iconClassName="mt-1">
                                 <div className="text-sm">
                                     <div className="font-medium text-gray-900">
                                         {doctor.location?.address || 'Address not available'}
@@ -78,19 +84,8 @@ const RenderDoctorCards = ({ caseData }: { caseData: ICase }) => {
                                         {doctor.location?.pincode && ` - ${doctor.location.pincode}`}
                                     </div>
                                 </div>
-                            </div>
-
-                            <div className="flex items-center space-x-2">
-                                <Mail className="h-4 w-4 text-gray-500" />
-                                <span className="text-sm text-gray-700">
-                                    {doctor.user?.email || 'Email not available'}
-                                </span>
-                            </div>
-                        </div>
-
-                        <div className="space-y-2">
-                            <div className="flex items-start space-x-2">
-                                <Calendar className="h-4 w-4 text-gray-500 mt-0.5" />
+                            </CaseDataTile>
+                            <CaseDataTile Icon={Calendar} className="items-start" iconClassName="mt-1">
                                 <div className="text-sm">
                                     <div className="font-medium text-gray-900">Available</div>
                                     <div className="text-gray-600">
@@ -102,34 +97,19 @@ const RenderDoctorCards = ({ caseData }: { caseData: ICase }) => {
                                         </div>
                                     )}
                                 </div>
-                            </div>
-
-                            <div className="flex items-center space-x-2">
-                                <Languages className="h-4 w-4 text-gray-500" />
-                                <span className="text-sm text-gray-700">
-                                    {doctor.languages?.join(', ') || 'Languages not specified'}
-                                </span>
-                            </div>
+                            </CaseDataTile>
+                            <CaseDataTile Icon={Languages} value={doctor.languages?.join(', ') || 'Languages not specified'} />
                         </div>
-                    </div>
-
-                    <div className="flex flex-wrap gap-2 pt-2">
-                        <div className="flex items-center space-x-1">
-                            <GraduationCap className="h-4 w-4 text-gray-500" />
-                            <span className="text-sm font-medium text-gray-700">Qualifications:</span>
-                        </div>
-                        {doctor.degree?.map((deg, index) => (
-                            <Badge key={index} variant="outline" className="text-xs">
-                                {deg}
-                            </Badge>
-                        )) || <span className="text-sm text-gray-500">Not specified</span>}
                     </div>
 
                     {doctorSummary && (
                         <Accordion type="single" collapsible className="mt-4">
                             <AccordionItem value="summary" className="border-t">
-                                <AccordionTrigger className="text-sm font-medium py-3">
-                                    AI Assessment & Recommendations
+                                <AccordionTrigger className="text-sm font-medium py-3 cursor-pointer hover:no-underline">
+                                    <div className="flex items-center">
+                                        <Sparkles className="h-3 w-3 mr-2 inline-block text-green-600" />
+                                        <span>AI Assessment & Recommendations</span>
+                                    </div>
                                 </AccordionTrigger>
                                 <AccordionContent className="space-y-3 pb-4">
                                     <Alert>
