@@ -32,7 +32,7 @@ import {
 import { CircleAlertIcon } from 'lucide-react'
 
 import type { ICase } from '../types/case-types'
-import { Link, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import { cn } from "@/lib/utils"
 import siteLinks from "@/lib/sitelinks"
 import { toast } from "sonner"
@@ -44,6 +44,7 @@ const ShowCaseList = ({ cases }: { cases: ICase[] }) => {
     const { isMobile } = useSidebar()
     const { caseId } = useParams()
     const [open, setOpen] = useState(false)
+    const navigate = useNavigate()
 
     const handleCopy = (item: ICase) => {
         navigator.clipboard.writeText(siteLinks.caseDetails(item._id).link)
@@ -53,6 +54,10 @@ const ShowCaseList = ({ cases }: { cases: ICase[] }) => {
     const onSuccessfulDeletion = () => {
         setOpen(false)
         setDeleteItem(null)
+
+        if (caseId) {
+            navigate(siteLinks.cases.link)
+        }
     }
 
     const { deleteCaseMutate, isDeleting } = useCreateCaseHandler({ onSuccess: onSuccessfulDeletion })
