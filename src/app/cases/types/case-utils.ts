@@ -1,6 +1,7 @@
 import {
   CaseStatus,
   CaseUrgencyLevel,
+  type ICase,
   type ICaseStatus,
   type ICaseUrgencyLevel,
 } from "./case-types";
@@ -54,4 +55,43 @@ export const getStatusColor = (status?: string) => {
   }
 
   return "bg-gray-600 text-gray-50";
+};
+
+export const shouldShowError = (caseDetails: ICase) => {
+  const errorStatuses = [
+    CaseStatus.Cancelled,
+    CaseStatus.FailedSuggestingDoctors,
+    CaseStatus.FailedToInitiate,
+    CaseStatus.FailedToAnalyse,
+  ];
+
+  const isCaseError = errorStatuses.includes(
+    caseDetails?.status as ICaseStatus
+  );
+  const errorMessage =
+    caseDetails?.case_errors?.[caseDetails.status] ||
+    "Failed to analyse your query";
+  return {
+    isCaseError,
+    errorMessage,
+  };
+};
+
+export const shouldShowLoading = (caseDetails: ICase) => {
+  const loadingStatuses = [
+    CaseStatus.Analysing,
+    CaseStatus.Pending,
+    CaseStatus.InProgress,
+    CaseStatus.SuggestingDoctors,
+  ];
+
+  const isCaseBeingAnalysed = loadingStatuses?.includes(
+    caseDetails?.status as ICaseStatus
+  );
+  const loadingMessage = "Analysing and finding right doctors for you";
+  return {
+    isCaseBeingAnalysed,
+    loadingMessage,
+    loadingStatus: caseDetails.status,
+  };
 };
