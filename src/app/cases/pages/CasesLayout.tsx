@@ -4,9 +4,9 @@ import {
 } from "@/components/ui/sidebar"
 import { AppSidebar } from "../sidebar/app-sidebar"
 import Navbar from "@/app/landing/components/Navbar"
-import CreateCase from "./CreateCase"
 import { useParams } from "react-router-dom"
 import CaseDetails from "./CaseDetails"
+import NewCase from "./NewCase"
 
 const CasesLayout = () => {
 
@@ -24,7 +24,7 @@ const CasesLayout = () => {
                     {
                         caseId
                             ? <CaseDetails />
-                            : <CreateCase />
+                            : <NewCase />
                     }
                 </div>
 

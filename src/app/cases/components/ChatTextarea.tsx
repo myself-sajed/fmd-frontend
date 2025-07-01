@@ -7,6 +7,9 @@ import useCreateCaseHandler from "../hooks/useCreateCaseHandler"
 import { FMD_CLIENT_QUERY_LOCAL_STORAGE_KEY, type ICase } from "../types/case-types"
 import { toast } from "sonner"
 import { cn } from "@/lib/utils"
+import { useAuthStore } from "@/store/auth-store"
+import siteLinks from "@/lib/sitelinks"
+import { useNavigate } from "react-router-dom"
 
 interface ChatTextareaProps {
     initialValue?: string
@@ -14,6 +17,9 @@ interface ChatTextareaProps {
 }
 
 const ChatTextarea: React.FC<ChatTextareaProps> = ({ initialValue = "", className }) => {
+
+    const { user } = useAuthStore();
+    const navigate = useNavigate();
     const [input, setInput] = useState<string>(() => {
         try {
             return localStorage.getItem(FMD_CLIENT_QUERY_LOCAL_STORAGE_KEY) ?? initialValue
@@ -23,8 +29,6 @@ const ChatTextarea: React.FC<ChatTextareaProps> = ({ initialValue = "", classNam
     })
 
     const textareaRef = useRef<HTMLTextAreaElement>(null)
-
-    console.log('rendering...')
 
     useEffect(() => {
         if (initialValue && initialValue !== input) {
@@ -40,11 +44,18 @@ const ChatTextarea: React.FC<ChatTextareaProps> = ({ initialValue = "", classNam
         }
     }, [input])
 
-    const { createCaseMutate, isPending } = useCreateCaseHandler()
+    const { createCaseMutate, isPending } = useCreateCaseHandler({})
 
     const handleSubmit = () => {
+
         if (!input.trim()) {
             toast.error("Please provide a query.")
+            return
+        }
+
+        if (!user) {
+            navigate(siteLinks.login.link)
+            toast.info("Your query will be saved, please login to continue.")
             return
         }
 

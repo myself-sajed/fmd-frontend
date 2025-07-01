@@ -8,3 +8,6 @@ export const createCase = (formData: Partial<ICase>) =>
 export const getAllCases = () => client.get(`${CASE_SERVICE}/get-all-cases`);
 export const getOneCase = (caseId: string) =>
   client.get(`${CASE_SERVICE}/get-one-case/${caseId}`);
+
+export const deleteCase = (caseId: string) =>
+  client.delete(`${CASE_SERVICE}/delete-case/${caseId}`);

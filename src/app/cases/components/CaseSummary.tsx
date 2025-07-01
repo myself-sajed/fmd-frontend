@@ -7,7 +7,7 @@ import type { ICase } from "../types/case-types"
 
 const CaseSummary = ({ caseDetails }: { caseDetails: ICase }) => {
     return (
-        <div className="space-y-8 max-w-4xl mx-auto">
+        <div className="space-y-4 max-w-4xl mx-auto">
             {/* Patient Query Section */}
             <Card className="shadow-none">
                 <CardHeader>
@@ -16,8 +16,8 @@ const CaseSummary = ({ caseDetails }: { caseDetails: ICase }) => {
                             <MessageSquare className="h-4 w-4 text-blue-600" />
                         </div>
                         <div>
-                            <CardTitle className="font-semibold text-gray-900">Patient Query</CardTitle>
-                            <p className="text-xs text-gray-500 mt-0.5">Initial patient concern and symptoms</p>
+                            <CardTitle className="font-semibold text-gray-900">Your Query</CardTitle>
+                            <p className="text-xs text-gray-500 mt-0.5">Provided concern and symptoms</p>
                         </div>
                     </div>
                 </CardHeader>
@@ -25,6 +25,7 @@ const CaseSummary = ({ caseDetails }: { caseDetails: ICase }) => {
                     <p className="text-gray-800 text-sm">{caseDetails.client_raw_query || "No query provided"}</p>
                 </CardContent>
             </Card>
+
 
             {/* AI Analysis Section */}
             <Card className="shadow-none">
@@ -90,6 +91,7 @@ const CaseSummary = ({ caseDetails }: { caseDetails: ICase }) => {
                     )}
                 </CardContent>
             </Card>
+
         </div>
     )
 }

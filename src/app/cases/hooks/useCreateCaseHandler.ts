@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createCase } from "../api/case-api";
+import { createCase, deleteCase } from "../api/case-api";
 import {
   FMD_CLIENT_QUERY_LOCAL_STORAGE_KEY,
   type ICase,
@@ -9,7 +9,11 @@ import { useNavigate } from "react-router-dom";
 import siteLinks from "@/lib/sitelinks";
 import { useAuthStore } from "@/store/auth-store";
 
-const useCreateCaseHandler = () => {
+type Props = {
+  onSuccess?: () => void;
+};
+
+const useCreateCaseHandler = ({ onSuccess }: Props) => {
   const { user } = useAuthStore();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
@@ -40,9 +44,28 @@ const useCreateCaseHandler = () => {
     },
   });
 
+  const { mutate: deleteCaseMutate, isPending: isDeleting } = useMutation({
+    mutationKey: ["CREATE_A_CASE", user?._id],
+    mutationFn: (caseId: string) => {
+      return deleteCase(caseId);
+    },
+    onSuccess: () => {
+      toast.success("Case deleted successfully!");
+      queryClient.invalidateQueries({
+        queryKey: ["GET_ALL_TICKETS", user?._id],
+      });
+      onSuccess?.();
+    },
+    onError: () => {
+      toast.error("Failed delete the case...");
+    },
+  });
+
   return {
     createCaseMutate,
     isPending,
+    deleteCaseMutate,
+    isDeleting,
   };
 };
 
