@@ -26,6 +26,8 @@ export interface ICase {
   voice_note_url?: string;
   voice_transcript?: string;
   case_errors?: ICaseErrors;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export const CaseStatus = {
