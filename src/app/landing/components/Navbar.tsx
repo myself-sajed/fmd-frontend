@@ -18,10 +18,11 @@ import {
 } from '@/components/ui/popover'
 import ThemeToggle from "@/components/custom/theme-toggle"
 import UserMenu from "./UserMenu"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import AppLogo from "./AppLogo"
 import { useAuthStore } from "@/store/auth-store"
 import siteLinks from "@/lib/sitelinks"
+import { SidebarTrigger } from "@/components/ui/sidebar"
 
 
 
@@ -33,6 +34,8 @@ export default function Navbar({ showLinks = true }: Props) {
 
 
     const { user } = useAuthStore()
+    const { pathname } = useLocation()
+    const isCasePage = pathname.includes("case")
 
     const navigationLinks = [
         { href: user ? siteLinks.cases.link : siteLinks.landing.link, label: user ? "Cases" : "Home", icon: HomeIcon },
@@ -47,6 +50,7 @@ export default function Navbar({ showLinks = true }: Props) {
                 <div className="flex items-center gap-2">
                     {/* Mobile menu trigger */}
                     <Popover>
+                        {isCasePage && <SidebarTrigger />}
                         <PopoverTrigger asChild>
                             <Button
                                 className="group size-8 md:hidden"
