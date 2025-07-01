@@ -14,11 +14,13 @@ const useSignupHandler = () => {
   const [isPasswordStrong, setIsPasswordStrong] = useState(false);
 
   const [formData, setFormData] = useState<ISignupForm>({
-    name: "Shaikh Sajed",
-    email: "sajed@gmail.com",
-    password: "Sajed@123",
-    cPassword: "Sajed@123",
-    photoURL: "https://avatar.iran.liara.run/public/1",
+    name: "",
+    email: "",
+    password: "",
+    cPassword: "",
+    photoURL: `https://avatar.iran.liara.run/public/${
+      Math.floor(Math.random() * 50) + 1
+    }`,
   });
 
   // create account mutation
@@ -30,7 +32,7 @@ const useSignupHandler = () => {
     onSuccess: (data) => {
       if (data?.data?.status === "success") {
         toast.success("Account created successfully");
-        setUser(data?.data?.data?.user);
+        setUser(data?.data?.user);
       } else {
         toast.error("Failed to create the account");
       }
