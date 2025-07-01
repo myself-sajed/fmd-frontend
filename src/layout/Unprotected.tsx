@@ -1,4 +1,4 @@
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { useRef, useEffect, useMemo } from "react";
 import { useAuthStore } from "@/store/auth-store";
 import { UserRolesEnum } from "@/app/authentication/types/user-roles";
@@ -41,6 +41,8 @@ const Unprotected = () => {
     if (user) {
         return <Navigate to={returnURL} replace={true} />;
     }
+
+    return <Outlet />
 
 };
 
