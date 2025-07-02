@@ -96,7 +96,7 @@ const CaseDetails = () => {
 
                                     {
                                         (isCaseError || isCaseBeingAnalysed)
-                                        && <p className="text-sm text-gray-500 pb-2 border-b">{caseDetails.client_raw_query || "No query provided"} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis obcaecati illum consequuntur voluptatum atque quas, qui, ea excepturi reprehenderit expedita laborum eum mollitia, voluptate id iusto numquam eveniet. Ducimus earum blanditiis amet eos corrupti tenetur hic animi, commodi reiciendis delectus dolorem beatae molestias in ipsa excepturi veniam voluptatum doloribus tempora quidem culpa voluptate? Atque autem numquam modi minima dolores in possimus consequatur facere quis sint, et assumenda soluta! Ducimus culpa excepturi eaque sed quasi? Aperiam obcaecati nulla veritatis, quasi expedita labore assumenda accusantium provident nam. Minus aspernatur earum quo, corporis officia rem similique cumque possimus. Similique est atque voluptatum maxime.</p>
+                                        && <p className="text-sm text-gray-500 pb-2 border-b">{caseDetails.client_raw_query || "No query provided"}</p>
                                     }
 
                                     {
