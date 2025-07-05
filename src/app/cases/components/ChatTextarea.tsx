@@ -78,7 +78,7 @@ const ChatTextarea: React.FC<ChatTextareaProps> = ({ initialValue = "", classNam
     }
 
     return (
-        <div className={cn("relative px-4 pb-6", className)}>
+        <div className={cn("relative pb-6", className)}>
             <div className="relative rounded-[45px] border drop-shadow-xs overflow-hidden bg-white">
                 {/* Scrollable Text Area */}
                 <div className="px-4 pt-4 pb-20">

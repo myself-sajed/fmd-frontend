@@ -42,7 +42,7 @@ const NewCase = () => {
                         ))}
                     </div>
                 </div>
-                <div className="px-2 sm:px-5 pt-2">
+                <div className="px-0 sm:px-5 pt-2">
                     <ChatTextarea initialValue={commonIssue} className="max-w-4xl mx-auto" />
                     <p className="text-[10px] sm:text-xs text-muted-foreground text-center mt-1">
                         Write a detailed query for better results. This will create a new case.
