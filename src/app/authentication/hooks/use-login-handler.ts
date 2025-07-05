@@ -33,8 +33,8 @@ const useLoginHandler = () => {
   useEffect(() => {
     setFormData(() => {
       return {
-        email: "johndoe@example.com",
-        password: "John@123",
+        email: "john@example.com",
+        password: "Me9890@findmydoctor",
       };
     });
   }, []);
