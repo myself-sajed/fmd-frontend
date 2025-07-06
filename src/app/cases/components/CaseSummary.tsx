@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Badge } from "@/components/ui/badge"
-import { MessageSquare, Brain, Heart, AlertCircle, CheckCircle2, Stethoscope } from "lucide-react"
+import { MessageSquare, Brain, Heart, AlertCircle, CheckCircle2, Stethoscope, Syringe } from "lucide-react"
 
 import type { ICase } from "../types/case-types"
 
@@ -45,6 +45,53 @@ const CaseSummary = ({ caseDetails }: { caseDetails: ICase }) => {
                 </CardContent>
             </Card>
 
+            {/* Test Recommendations Section */}
+            <Card className="shadow-none">
+                <CardHeader className="pb-4">
+                    <div className="flex items-center gap-3">
+                        <div className="p-2 bg-orange-100 rounded-lg">
+                            <Syringe className="h-4 w-4 text-orange-600" />
+                        </div>
+                        <div>
+                            <CardTitle className="font-semibold text-gray-900">Recommended Tests</CardTitle>
+                            <p className="text-xs text-gray-500 mt-0.5">Get these reports done for more clarity on your case</p>
+                        </div>
+                    </div>
+                </CardHeader>
+                <CardContent className="pt-0 -mt-4">
+                    {caseDetails.suggested_tests?.length > 0 ? (
+                        <div className="space-y-1">
+                            {caseDetails.suggested_tests.map((tip: string, index: number) => (
+                                <div
+                                    key={index}
+                                    className="flex items-start gap-3"
+                                >
+                                    <div className="flex-shrink-0 mt-1">
+                                        <CheckCircle2 className="h-4 w-4 text-orange-600" />
+                                    </div>
+                                    <p className="text-gray-800 text-sm leading-relaxed flex-1">{tip}</p>
+                                </div>
+                            ))}
+
+                            {/* Summary Badge */}
+                            <div className="flex justify-center mt-10">
+                                <Badge variant="secondary" className="bg-orange-100 text-orange-800 hover:bg-orange-200">
+                                    <Stethoscope className="h-3 w-3 mr-1" />
+                                    {caseDetails.suggested_tests.length} Recommendation{caseDetails.suggested_tests.length !== 1 ? "s" : ""}
+                                </Badge>
+                            </div>
+                        </div>
+                    ) : (
+                        <Alert className="border-amber-200 bg-amber-50">
+                            <AlertCircle className="h-4 w-4 text-amber-800" />
+                            <AlertDescription className="text-amber-800">
+                                No test recommendations are available for this case at this time.
+                            </AlertDescription>
+                        </Alert>
+                    )}
+                </CardContent>
+            </Card>
+
             {/* Care Recommendations Section */}
             <Card className="shadow-none">
                 <CardHeader className="pb-4">
@@ -66,7 +113,7 @@ const CaseSummary = ({ caseDetails }: { caseDetails: ICase }) => {
                                     key={index}
                                     className="flex items-start gap-3"
                                 >
-                                    <div className="flex-shrink-0 mt-0.5">
+                                    <div className="flex-shrink-0 mt-1">
                                         <CheckCircle2 className="h-4 w-4 text-green-600" />
                                     </div>
                                     <p className="text-gray-800 text-sm leading-relaxed flex-1">{tip}</p>
@@ -83,7 +130,7 @@ const CaseSummary = ({ caseDetails }: { caseDetails: ICase }) => {
                         </div>
                     ) : (
                         <Alert className="border-amber-200 bg-amber-50">
-                            <AlertCircle className="h-4 w-4 text-amber-600" />
+                            <AlertCircle className="h-4 w-4 text-amber-800" />
                             <AlertDescription className="text-amber-800">
                                 No care recommendations are available for this case at this time.
                             </AlertDescription>
