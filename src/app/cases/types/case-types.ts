@@ -20,6 +20,7 @@ export interface ICase {
   ai_doctor_summary: IAIDoctorSummary;
   doctor_notes?: string;
   tips: string[];
+  suggested_tests: string[];
   status: ICaseStatus;
   preferred_time: string;
   scheduled_time?: Date;
@@ -95,3 +96,17 @@ export interface IAIParsedOutput {
   suggested_doctors: IAIDoctorMatch[];
   tips: string[];
 }
+
+export const LANGUAGES = [
+  "English",
+  "Hindi",
+  "Marathi",
+  "Bengali",
+  "Gujarati",
+  "Tamil",
+  "Telugu",
+  "Kannada",
+  "Malayalam",
+  "Punjabi",
+  "Any",
+];
