@@ -59,7 +59,7 @@ const commonIssues = [
     {
         label: "Headache",
         Icon: Brain,
-        text: "I'm having a headache",
+        text: "I've been having a constant headache since this morning. The pain is mostly around my temples and behind my eyes. It's affecting my focus and making me feel tired. No painkillers seem to be helping so far.",
         classes: {
             bgColor: "bg-blue-50",
             textColor: "text-blue-700",
@@ -70,7 +70,7 @@ const commonIssues = [
     {
         label: "Fever",
         Icon: Thermometer,
-        text: "I'm running a fever",
+        text: "I'm experiencing a high fever with body aches and chills. The fever started last night and has persisted throughout the day. I've also been sweating a lot and feeling fatigued. Even after taking medicine, my temperature hasn't come down much.",
         classes: {
             bgColor: "bg-violet-50",
             textColor: "text-violet-700",
@@ -81,7 +81,7 @@ const commonIssues = [
     {
         label: "Chest Pain",
         Icon: HeartPulse,
-        text: "I'm experiencing chest pain",
+        text: "I've been feeling a sharp pain in my chest for the past few hours. It usually gets worse when I take deep breaths or move suddenly. I also feel slightly short of breath at times. It's making me anxious and uncomfortable.",
         classes: {
             bgColor: "bg-yellow-50",
             textColor: "text-yellow-700",
@@ -90,9 +90,9 @@ const commonIssues = [
         },
     },
     {
-        label: "Back pain",
+        label: "Back Pain",
         Icon: Bone,
-        text: "I'm having major back pain lately",
+        text: "My lower back has been hurting consistently for the last few days. It gets worse after sitting or standing for a long time. Sometimes the pain radiates down my legs slightly. Stretching doesn't seem to help much anymore.",
         classes: {
             bgColor: "bg-teal-50",
             textColor: "text-teal-700",
@@ -101,4 +101,5 @@ const commonIssues = [
         },
     },
 ];
+
 
