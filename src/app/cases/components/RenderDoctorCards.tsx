@@ -62,8 +62,8 @@ const RenderDoctorCards = ({ caseData }: { caseData: ICase }) => {
                 <CardContent className="space-y-4">
                     <div className="border-b pb-3 -mt-8 space-y-3">
                         {
-                            doctor.bio && <p className="text-gray-700 text-sm">
-                                {doctor.bio || 'No bio available'}
+                            doctorSummary.reason && <p className="text-gray-700 text-sm">
+                                {doctorSummary.reason}
                             </p>
                         }
 
@@ -115,7 +115,7 @@ const RenderDoctorCards = ({ caseData }: { caseData: ICase }) => {
                                     <Alert>
                                         <AlertCircle className="h-4 w-4" />
                                         <AlertDescription className="text-sm">
-                                            <strong>Why this doctor:</strong> {doctorSummary.reason}
+                                            <strong>About Doctor:</strong> {doctor?.bio}
                                         </AlertDescription>
                                     </Alert>
 
